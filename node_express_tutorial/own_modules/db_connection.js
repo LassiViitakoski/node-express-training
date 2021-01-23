@@ -13,6 +13,6 @@ exports.connectionToMySql = function(connection) {
                 resolve(data);
             });
         });
-    })
+    });
     
 }

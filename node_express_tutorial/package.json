@@ -2,7 +2,7 @@
   "name": "node_express_tutorial",
   "version": "1.0.0",
   "description": "express tutorial",
-  "main": "server.js",
+  "main": "server2.js",
   "private": "true",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
