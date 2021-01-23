@@ -1,12 +1,22 @@
-function testi() {
+function addEventListeners() {
     $(document).ready(function() {
-        console.log("huhuuuu");
+        $('#search_term').keyup(function(event) {
+            if(event.keyCode == 13) search_customers();
+        });
+    });
+}
+function search_customers() {
+    clean_table();
+    $(document).ready(function() {
         $.ajax({
             type: 'POST',
-            url: 'http://localhost:8081/db_connection'
+            url: 'http://localhost:8081/db_connection',
+            cache: false,
+            data: { 
+                search_term: $('#search_term').val() 
+            }
         }).done(function(data) {
             console.log("loading complete");
-            console.log(data);
             do_html(data);
         }).fail(function(error) {
             console.log("Error" + error);
@@ -15,44 +25,23 @@ function testi() {
         });
     });
 }
-function do_html_table(customer) {
-    for(let key in customer) {
-        console.log(customer[key]);
-    }
-}
 function do_html(data) {
-    let tr = document.createElement('tr');
-    for(let key in data[0]) {
-        let th = document.createElement('th');
-        $(th).append(key);
-        $(th).appendTo(tr);
-    }
-    $('#customertable').append(tr);
+    let check = 0;
 
     $.each(data, (index, customer) => {
-        do_html_table(customer);
-    });
-    /*let html = "";
-    let h = "<h1 style='background-color:red;color:whitesmoke;margin:20px;border:20px solid red;'>AsiakasTaulukko</h1>";
-    let table = "";
-    table += "<table style='margin-left:20px;'>";
-    table += "<tr>";
-    for(let key in data[0]) {
-        table += "<th>" + key + "</th>";
-    }
-    table += "</tr>";
-    
-    for(let i = 0; i < data.length; i++) {
-        let obj = data[i];
-        for(let key in obj) {
-
-
-            //console.log(obj[key]);
+        let th = document.createElement('tr');
+        let td = document.createElement('tr');
+        for(let key in customer) {
+            if(check == 0) $('<th></th>').append(key).appendTo(th);
+            $("<td></td>").text(customer[key]).appendTo(td);
         }
-    }
-    
-    table += "</table>";
-    html += h;
-    html += table;*/
-
+        if(check == 0) $('#customertable').append(th);
+        $('#customertable').append(td);
+        check++;
+    });
+}
+function clean_table() {
+    $(document).ready(function() {
+        $('#customertable').empty();
+    });
 }

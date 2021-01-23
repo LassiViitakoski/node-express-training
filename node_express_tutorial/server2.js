@@ -7,7 +7,8 @@ const db_connection = require('./own_modules/db_connection');
 
 //app.use(express.static(path.join(__dirname + 'public')));
 app.use(express.static('public'));
-app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
 
 app.use(function(req, res, next) {
     res.header("Access-Control-Allow-Origin", "http://localhost");
@@ -21,7 +22,7 @@ app.get('/index.html', function(req, res) {
 
 app.post('/db_connection', async function(req, res) {
     const connection = db_config.mySQLCredentials();
-    let data = await db_connection.connectionToMySql(connection);
+    let data = await db_connection.connectionToMySql(connection, req.body.search_term);
     res.send(data);
 });
 app.get('/testi', function(req, res) {

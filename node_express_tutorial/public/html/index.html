@@ -23,15 +23,10 @@
          }
       </style>
    </head>
-   <body>
-      <form action="/db_connection" method="POST">
-         <input type="text" name="search_term" placeholder="Search customers by name">
-         <input type="submit" id="connection" value="Klikkaa tästä">
-      </form>
-      <button onclick="testi()">Toimiiko tämä</button>
-
+   <body onload="addEventListeners()">
+      <input type="text" id="search_term" placeholder="Search customers by name">
+      <button onclick="search_customers()">Hae nimet</button>
       <table id="customertable">
-
       </table>
       <!--<form action = "http://127.0.0.1:8081/process_get" method = "GET">
          First Name: <input type = "text" name = "first_name">  <br>
