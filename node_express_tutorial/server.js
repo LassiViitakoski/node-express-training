@@ -1,11 +1,10 @@
-const express = require('express');
+/*const express = require('express');
 const app = express();
 const bodyParser = require('body-parser');
 const fs = require('fs');
 const multer = require('multer');
 const { allowedNodeEnvironmentFlags } = require('process');
 const path = require('path');
-const db_config = require('./own_modules/db_config');
 
 //app.use(express.static(path.join(__dirname, 'public')));
 
@@ -111,11 +110,11 @@ app.post('/file_upload', upload.single('file'), function(req, res) {
         return next(error);
     }
     res.send(file);
-});*/
+});
 
 const server = app.listen(8081, function() {
     const host = server.address().address;
     const port = server.address().port;
 
     console.log("Example app listening at http://" + host + port);
-});
+});*/
