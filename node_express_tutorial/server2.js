@@ -4,6 +4,7 @@ const bodyParser = require('body-parser');
 const path = require('path');
 const db_config = require('./own_modules/db_config');
 const db_connection = require('./own_modules/db_connection');
+require('dotenv').config();
 
 //app.use(express.static(path.join(__dirname + 'public')));
 app.use(express.static('public'));
