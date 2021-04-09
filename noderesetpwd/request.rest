@@ -1,0 +1,19 @@
+POST http://localhost:3000/send_email
+Content-Type: application/json
+
+{
+    
+}
+
+###
+
+POST http://localhost:3000/change_password
+Content-Type: application/json
+
+{
+    "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTQzMTI0NDQ0LCJlbWFpbCI6Imthc3NpLmtpaXRha29za2lAZ21haWwuY29tIiwiaWF0IjoxNjE3Mjg3OTEwLCJleHAiOjE2MTcyODg4MTB9.a9o1PxP-2XtuKCHo9pgDCy6M9E-sM4wHvOOG3SpHw0I"
+}
+
+###
+
+GET http://localhost:3000/?email=kassi.kiitakoski@gmail.com

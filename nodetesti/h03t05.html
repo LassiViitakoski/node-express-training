@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Tehtävä : 5</title>
+    <meta charset="UTF-8">
+  </head>
+  <body style="width: 400px">
+    <h1>SimpleToDo</h1>
+    <p>ToDo</p>
+    <input type="text" id="tekstiloota"><br><br>
+    <button onclick="addList()">Lisää</button>
+    <button onclick="clearList()">Tyhjää lista</button>
+
+    <ul id="lista"></ul>
+
+    <script>
+      function addList() {
+        let listElem = document.getElementById("lista");
+        let textElem = document.getElementById("tekstiloota");
+        let li = document.createElement("li");
+        li.addEventListener('click', removeItem)
+
+        let text = document.createTextNode(textElem.value);
+        li.appendChild(text);
+        listElem.appendChild(li);
+      }
+
+      function clearList() {
+
+        let listElem = document.getElementById("lista");
+        while (listElem.hasChildNodes()) {
+
+          listElem.removeChild(listElem.firstChild);
+        }
+      }
+
+      function removeItem(event) {
+        let listElem = document.getElementById("lista");
+        listElem.removeChild(event.target);
+      }
+    </script>
+
+  </body>
+
+
+</html>
