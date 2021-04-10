@@ -11,11 +11,12 @@ const options = {
     password: process.env.MYSQL_PASSWORD,
     database: process.env.MYSQL_DATABASE,
     port: process.env.MYSQL_PORT,
+}
+const session_store = new mysql_store({
     clearExpired: true,
     checkExpirationInterval: 1000 * 60,
     expiration: 1000 * 60 * 60
-}
-const session_store = new mysql_store(options);
+}, options);
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
